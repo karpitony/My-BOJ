@@ -1,10 +1,13 @@
 import sys
+import math
 input = sys.stdin.readline
 
-incline = []
+incline = set()
 for _ in range(int(input())):
     x, y = map(int, input().split())
-    incline.append(y/x)
+    
+    g = math.gcd(abs(x), abs(y))
+    x, y = x//g, y//g
+    incline.add((x, y))
 
-set_incline = set(incline)
-print(len(set_incline))
+print(len(incline))
